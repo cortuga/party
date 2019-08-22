@@ -30,9 +30,37 @@ class Movies extends Component {
 
   render() {
     //has multi tags and component content
+    // console.log(this.state.searchResults)
     return (
       <section>
         <h1>Party Like it's 1989!</h1>
+        <section>
+          <h2>Movies!!!</h2>
+          <section>
+            {this.state.searchResults.map(result => {
+              // console.log(result.title)
+              return (
+                <ul>
+                  <li
+                    key='li-movie-image'
+                    //find out what the key needs to be
+                    className='li-movie-image'
+                  >
+                    <img
+                      className=''
+                      alt='Movies of the 90s'
+                      src={`
+                      https://image.tmdb.org/t/p/w185_and_h278_bestv2${
+                        result["poster_path"]
+                      }`}
+                    />
+                    {result.name}
+                  </li>
+                </ul>
+              )
+            })}
+          </section>
+        </section>
       </section>
     )
   }
