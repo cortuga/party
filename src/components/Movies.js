@@ -20,7 +20,7 @@ class Movies extends Component {
   }
 
   componentDidMount() {
-    //means whenever the page loads
+    //componentDidMount =means whenever the page loads
     this.makeApiCall()
   }
 
@@ -30,31 +30,35 @@ class Movies extends Component {
 
   render() {
     //has multi tags and component content
-    // console.log(this.state.searchResults)
+    // console.log(results)
     return (
       <section>
-        <h1>Party Like it's 1989!</h1>
+        <h1>Movies to look forward to! => From a Time Traveler</h1>
+        <h4>
+          Hope you brought your towel, this one's gonna be wet more then likely.
+        </h4>
         <section>
-          <h2>Movies!!!</h2>
+          <h2>Coming Soon!</h2>
           <section>
             {this.state.searchResults.map(result => {
-              // console.log(result.title)
+              // console.log(result)
               return (
                 <ul>
                   <li
-                    key='li-movie-image'
-                    //find out what the key needs to be
+                    key={result.id} //I'm doing something incorrect with the keys. Will need to resolve tomorrow.
                     className='li-movie-image'
                   >
+                    <h2 className='movie-titles'>{result.title}</h2>
                     <img
-                      className=''
+                      key={result.id}
+                      className='movie-posters'
                       alt='Movies of the 90s'
                       src={`
                       https://image.tmdb.org/t/p/w185_and_h278_bestv2${
                         result["poster_path"]
                       }`}
                     />
-                    {result.name}
+                    <p>{result.overview}</p>
                   </li>
                 </ul>
               )
